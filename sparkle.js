@@ -295,8 +295,8 @@ bot.on('speak', function (data) {
     [data.name, data.userid, data.text, new Date()]);
 
   //If it's a supported command, handle it
-  if (text.match(/^teslabot/i)) {
-    switch(text.replace(/^teslabot /i, '')) {
+  if (text.match(/teslabot/i)) {
+    switch(text.replace(/teslabot /i, '')) {
       //--------------------------------------
       //COMMAND LISTS
       //--------------------------------------
@@ -336,8 +336,6 @@ bot.on('speak', function (data) {
       case 'antiquing':
       case 'antiquing?':
         bot.speak('boom!');
-        bot.boot('4e1c82d24fe7d0313f0be9a7'); //boot kirby
-        //bot.boot('4e3b6a804fe7d0578d003859', 'didn\'t awesome tpc'); //boot vic
         break;
 
       //Responds to reptar-related call
@@ -360,7 +358,7 @@ bot.on('speak', function (data) {
       //Outputs github url for SparkleBot
       case '.source':
         bot.speak('My source code is available at: '
-          + 'https://github.com/sharedferret/Sparkle-Turntable-Bot');
+          + 'https://github.com/armyofgnomes/Sparkle-Turntable-Bot');
         break;
 
       //Ping bot
@@ -382,10 +380,7 @@ bot.on('speak', function (data) {
 
       //Rules rehash since xxRAWRxx only responds to .rules
       case 'rules':
-        bot.speak('You can view the rules here: http://tinyurl.com/63hr2jl');
-        setTimeout(function() {
-          bot.speak('No queue, fastest finger, play one song and step down');
-        }, 600);
+        bot.speak('No rules! I do what I wants!');
         break;
 
       //hugs support.
@@ -568,15 +563,6 @@ bot.on('speak', function (data) {
         }, 500);
         break;
 
-      //Bot freakout
-      case 'reptar sucks':
-        bot.speak('OH NO YOU DIDN\'T');
-        setTimeout(function() {
-          reptarCall();
-        }, 1000);
-        break;
-
-
       //--------------------------------------
       //ADMIN-ONLY COMMANDS
       //--------------------------------------
@@ -622,20 +608,6 @@ bot.on('speak', function (data) {
           bot.remDj(djs[i]);
         }
         bot.addDj();
-        break;
-
-      //Changes room
-      case 'Meow, go to IAS':
-        if (data.userid == config.MAINADMIN) {
-          bot.roomDeregister();
-          bot.roomRegister(config.IASROOMID);
-        }
-        break;
-      case 'Meow, go to Reptar Room':
-        if (data.userid == config.MAINADMIN) {
-          bot.roomDeregister();
-          bot.roomRegister(config.ROOMID);
-        }
         break;
 
       //Step up to DJ
@@ -766,50 +738,6 @@ bot.on('newsong', function (data) {
     setTimeout(function() {
       bot.speak('SAIL!');
     }, 34500);
-  }
-
-  // ****
-  // REPTAR SINGALONGS
-  // ****
-
-  //CAN YOU FEEL IT?
-  if(currentsong.song == 'Houseboat Babies') {
-    setTimeout(function() {
-      bot.speak('CAN YOU FEEL IT?') ;
-    }, 84500);
-    setTimeout(function() {
-      bot.speak('YES I CAN FEEL IT');
-    }, 86500);
-    setTimeout(function() {
-      bot.speak('When I\'m at Jenny\'s house');
-    }, 89500);
-    setTimeout(function() {
-      bot.speak('I look for bad ends');
-    }, 93000);
-    setTimeout(function() {
-      bot.speak('Forget your parents!');
-    }, 95200);
-    setTimeout(function() {
-      bot.speak('But it\'s just cat and mouse!');
-    }, 97900);
-  }
-
-  if((currentsong.artist == 'Reptar') && (currentsong.song == 'Blastoff')) {
-    setTimeout(function() {
-      bot.speak('Well I won\'t call you!');
-    }, 184000);
-    setTimeout(function() {
-      bot.speak('If you don\'t call me!');
-    }, 186000);
-    setTimeout(function() {
-      bot.speak('No no I won\'t call you!');
-    }, 188000);
-    setTimeout(function() {
-      bot.speak('If you don\'t call me!');
-    }, 190000);
-    setTimeout(function() {
-      bot.speak('Yeah!');
-    }, 192000);
   }
 });
 
