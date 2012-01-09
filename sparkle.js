@@ -177,7 +177,7 @@ bot.on('ready', function (data) {
       //yay
     });
 
-  bot.roomRegister(config.ROOMID);
+  bot.roomRegister(config.DANCING_GNOMES_ROOMID);
 });
 
 //Runs when the room is changed.
@@ -384,8 +384,8 @@ bot.on('speak', function (data) {
 
     //hugs support.
     //Change xxMEOWxx, meow etc to bot name
-    case 'hugs xxMEOWxx':
-    case 'hugs meow':
+    case 'hold me steggy':
+    case 'hugs steggy':
       var rand = Math.random();
       var timetowait = 1600;
       if (rand < 0.4) {
@@ -611,21 +611,21 @@ bot.on('speak', function (data) {
       break;
 
     //Step up to DJ
-    case 'Meow, step up':
+    case 'steggy, step up':
       if (admincheck(data.userid)) {
         bot.addDj();
       }
       break;
 
     //Step down if DJing
-    case 'Meow, step down':
+    case 'steggy, step down':
       if (admincheck(data.userid)) {
         bot.remDj(config.USERID);
       }
       break;
 
     //Bot freakout
-    case 'OH MY GOD MEOW':
+    case 'OH MY GOD STEGGY':
       if (admincheck(data.userid)) {
         reptarCall();
         setTimeout(function() {
@@ -648,7 +648,7 @@ bot.on('speak', function (data) {
 
     //Shuts down bot (only the main admin can run this)
     //Disconnects from room, exits process.
-    case 'Meow, shut down':
+    case 'steggy, shut down':
       if (data.userid == config.MAINADMIN) {
         bot.roomDeregister();
         process.exit(0);
