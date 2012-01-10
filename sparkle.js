@@ -105,7 +105,7 @@ function reptarCall() {
   } else if (rand < 0.6) {
     bot.speak('RAWR!!!');
   } else {
-    bot.speak('.reptar');
+    bot.speak('wtf?');
   }
 }
 
@@ -249,14 +249,14 @@ bot.on('registered',   function (data) {
   if(config.welcomeUsers) {
     if (!user.name.match(/^ttdashboard/)) {
       switch(user.name) {
-        case 'overlordnyaldee':
-          bot.speak('Meow!');
+        case 'armyofgnomes':
+          bot.speak('My creator!');
           setTimeout(function() {
-            bot.speak('hugs overlordnyaldee');
+            bot.speak('Yo yo yo');
           }, 2000);
           break;
-        case 'sharedferret':
-          bot.speak('Hi ferret!');
+        case 'Jakey Cake':
+          bot.speak('Nemesis!');
           break;
         default:
           bot.speak(config.welcomeGreeting + user.name + '!');
@@ -568,11 +568,20 @@ bot.on('speak', function (data) {
 
     //Tells bot to awesome the current song
     case 'dance':
+    case 'steggy dance':
+    case 'dance steggy':
     case 'awesome':
-      if (admincheck(data.userid)) {
+      //if (admincheck(data.userid)) {
         bot.vote('up');
         bot.speak('Commence the jigglin!');
-      }
+        bot.snag();
+      //}
+      break;
+
+    case "I'll cut you @steggy":
+    case "I'll cut you steggy":
+    case "I'll cut you":
+      bot.speak("Not if I cut you first!");
       break;
 
     //Tells bot to lame the current song
@@ -602,7 +611,8 @@ bot.on('speak', function (data) {
       break;
 
     //Pulls all DJs on stage and plays a song.
-    case 'cb4':
+    case 'steggy, play some jams':
+    case 'play some jams steggy':
       bot.speak('Awwwww yeah');
       for (i in djs) {
         bot.remDj(djs[i]);
@@ -612,6 +622,7 @@ bot.on('speak', function (data) {
 
     //Step up to DJ
     case 'steggy, step up':
+    case 'go steggy go':
       if (admincheck(data.userid)) {
         bot.addDj();
       }
@@ -624,6 +635,12 @@ bot.on('speak', function (data) {
       }
       break;
 
+    case 'skip it steggy':
+    case 'no steggy':
+    case 'steggy not again':
+      bot.speak("Sorry :(");
+      bot.skip();
+      break;
     //Bot freakout
     case 'OH MY GOD STEGGY':
       if (admincheck(data.userid)) {
@@ -727,10 +744,10 @@ bot.on('newsong', function (data) {
   }
 
   //Auto-awesome
-  var randomwait = Math.floor(Math.random() * 20) + 4;
-  setTimeout(function() {
-    bot.vote('up');
-  }, randomwait * 1000);
+  //var randomwait = Math.floor(Math.random() * 20) + 4;
+  //setTimeout(function() {
+  //  bot.vote('up');
+  //}, randomwait * 1000);
 
   //SAIL!
   if((currentsong.artist == 'AWOLNATION') && (currentsong.song == 'Sail')) {
