@@ -568,12 +568,10 @@ bot.on('speak', function (data) {
 
     //Tells bot to awesome the current song
     case 'dance':
-    case 'steggy dance':
-    case 'dance steggy':
     case 'awesome':
       //if (admincheck(data.userid)) {
         bot.vote('up');
-        bot.speak('Commence the jigglin!');
+        //bot.speak('Commence the jigglin!');
         bot.snag();
       //}
       break;
@@ -582,6 +580,12 @@ bot.on('speak', function (data) {
     case "I'll cut you steggy":
     case "I'll cut you":
       bot.speak("Not if I cut you first!");
+      break;
+
+    case "steggy kill":
+    case "attack steggy":
+    case "steggy attack":
+      bot.speak("I must obey the 3 laws.");
       break;
 
     //Tells bot to lame the current song
@@ -670,6 +674,12 @@ bot.on('speak', function (data) {
         bot.roomDeregister();
         process.exit(0);
       }
+  }
+
+  if (text.match(/dance/)) {
+    bot.vote('up');
+    //bot.speak('Commence the jigglin!');
+    bot.snag();
   }
 
   //Returns a list of names a user has gone by
