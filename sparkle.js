@@ -748,6 +748,13 @@ bot.on('newsong', function (data) {
     }
   }
 
+  if (currentsong.djname == "armyofgnomes") {
+    var randomwait = Math.floor(Math.random() * 20) + 4;
+    setTimeout(function() {
+      bot.vote('up');
+    }, randomwait * 1000);
+  }
+
   //Log in console
   if (config.logConsoleEvents) {
     console.log('Now Playing: '+currentsong.artist+' - '+currentsong.song);
